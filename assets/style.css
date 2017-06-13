@@ -1,0 +1,75 @@
+/* Global STYLES */
+
+
+* {
+    box-sizing: border-box;
+}
+
+@font-face{
+    font-family: "Helvetica condensed bold";
+    src: url("./helvetica-neue-lt-std-87-heavy-condensed-593e4667bc1e5.otf");
+}
+
+
+
+
+/* HEADING */
+heading > h1 {
+    text-align: center;
+}
+
+
+
+
+
+/* MAIN CONTENT */
+
+
+
+/*Puzzle Board */
+
+.puzzle .letterRow {
+    text-align: center;
+}
+
+.puzzle .letterbox {
+    border: solid black;
+    height: 75px;
+    width: 50px;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin-right: -7px;
+    margin-top: -3px;
+}
+
+.puzzle .letterbox > p {
+    font-family: "Helvetica condensed bold";
+    font-size: 48px;
+    position: absolute;
+    margin: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+/* Category */
+
+#category {
+    text-align: center;
+    font-family: "Gotham";
+}
+
+
+
+
+
+/*    FOOTER  */
+
+footer {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
