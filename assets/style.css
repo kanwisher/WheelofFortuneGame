@@ -39,8 +39,9 @@ heading > h1 {
     display: inline-block;
     vertical-align: top;
     position: relative;
-    margin-right: -7px;
-    margin-top: -3px;
+    margin-right: -2px;
+    margin-top: 2px;
+    background-color: #4caf50;
 }
 
 .puzzle .letterbox > p {
@@ -51,6 +52,30 @@ heading > h1 {
     right: 0;
     left: 0;
     bottom: 0;
+    height: 100%;
+}
+
+.puzzle .unsolved {
+    background-color: white;
+}
+
+@keyframes revealLetter {
+
+    0% { background-color: blue;
+    color: blue}
+    25% { background-color: blue;
+    color: blue}
+    25.01% { background-color: white;
+    color: white;
+    opacity: 1}
+    100% {opacity: 1}
+}
+
+.revealed {
+    animation-name: revealLetter;
+    animation-duration: 2s;
+    animation-direction: normal;
+    animation-fill-mode:forwards;
 }
 
 /* Category */
