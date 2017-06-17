@@ -8,30 +8,31 @@
     </head>
     <body>
     <div class="wheel">
-        <div class="piece"></div>
-        <div class="piece"></div>
-        <div class="piece"></div>
-        <div class="piece"></div>
-        <div class="piece"></div>
-        <div class="piece"></div>
-        <div class="piece"></div>
-        <div class="piece"></div>
-        <div class="piece"></div>
-        <div class="piece"></div>
+        <div class="piece"><p>Bankrupt</p></div>
+        <div class="piece"><p>100</p></div>
+        <div class="piece"><p>200</p></div>
+        <div class="piece"><p>300</p></div>
+        <div class="piece"><p>400</p></div>
+        <div class="piece"><p>600</p></div>
+        <div class="piece"><p>700</p></div>
+        <div class="piece"><p>800</p></div>
+        <div class="piece"><p>900</p></div>
+        <div class="piece"><p>1000</p></div>
         <div id="spin">SPIN!</div>
     </div>
     </body>
-
     <script type="text/javascript">
     let click = document.getElementById("spin");
     let wheel = document.getElementsByClassName("wheel")[0];
-    
+
     document.addEventListener("transitionend", function(){
-        alert("wheel is damn done spinning");
+        
     })
+
+    let choiceArray = [ 0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
     click.addEventListener("click", function(){
-        let number = Math.random() * 8000;
-        wheel.style.transform = `rotate(${number}deg)`;
+        let number = 36;
+        wheel.style.transform = `rotate3d(0, 0, 1, ${number}deg)`; //rotate on Z axis
     })
     </script>
 </html>
