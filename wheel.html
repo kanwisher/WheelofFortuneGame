@@ -30,7 +30,8 @@
         alert("wheel is damn done spinning");
     })
     click.addEventListener("click", function(){
-        wheel.style.transform = "rotate(1000deg)";
+        let number = Math.random() * 8000;
+        wheel.style.transform = `rotate(${number}deg)`;
     })
     </script>
 </html>
