@@ -13,26 +13,33 @@
         <div class="piece"><p>200</p></div>
         <div class="piece"><p>300</p></div>
         <div class="piece"><p>400</p></div>
+        <div class="piece"><p>500</p></div>
         <div class="piece"><p>600</p></div>
         <div class="piece"><p>700</p></div>
         <div class="piece"><p>800</p></div>
         <div class="piece"><p>900</p></div>
-        <div class="piece"><p>1000</p></div>
         <div id="spin">SPIN!</div>
     </div>
     </body>
     <script type="text/javascript">
     let click = document.getElementById("spin");
     let wheel = document.getElementsByClassName("wheel")[0];
-
+    let rotations = 0;
     document.addEventListener("transitionend", function(){
         
     })
 
-    let choiceArray = [ 0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+    let choiceArray = [0, 900, 800, 700, 600, 500, 400, 300, 200, 100]
+    let spinArray = [360, 720, 1080, 1440]
     click.addEventListener("click", function(){
-        let number = 36;
-        wheel.style.transform = `rotate3d(0, 0, 1, ${number}deg)`; //rotate on Z axis
+        rotations++; //increment multiplier so that wheel will always spin around 3 times on randomSpin
+        let randomChoice = Math.floor((Math.random() * choiceArray.length)); //let's just pick the array item and transition to it!
+        let randomSpin = rotations * 720; //keeps increasing the rotate degrees so that the wheel spins same direction and always 3 times
+
+        let number = 360/10 * randomChoice + randomSpin;
+        console.log(number);        
+        console.log(choiceArray[randomChoice]);
+        wheel.style.transform = `rotate(${number}deg)`; //rotate on Z axis
     })
     </script>
 </html>
