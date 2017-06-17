@@ -26,17 +26,15 @@
     let wheel = document.getElementsByClassName("wheel")[0];
     let rotations = 0;
     document.addEventListener("transitionend", function(){
-        
+        //add code for when wheel animation has stopped
     })
 
-    let choiceArray = [0, 900, 800, 700, 600, 500, 400, 300, 200, 100]
-    let spinArray = [360, 720, 1080, 1440]
+    let choiceArray = [0, 900, 800, 700, 600, 500, 400, 300, 200, 100] //my array order matters
     click.addEventListener("click", function(){
-        rotations++; //increment multiplier so that wheel will always spin around 3 times on randomSpin
-        let randomChoice = Math.floor((Math.random() * choiceArray.length)); //let's just pick the array item and transition to it!
-        let randomSpin = rotations * 720; //keeps increasing the rotate degrees so that the wheel spins same direction and always 3 times
-
-        let number = 360/10 * randomChoice + randomSpin;
+        rotations++; //increment multiplier so that wheel will always spin around 3 times on randomSpin, this number could be about anything as long as it higher than the last number ( but a larger jump would increase the amount of spins);
+        let randomChoice = Math.floor((Math.random() * choiceArray.length)); //let's just pick the array item randomly and then transition to it, the wheel is just for looks!
+        let randomSpin = rotations * 720; //keeps increasing the rotate degrees so that the wheel spins same direction and always 3 times, important 
+        let number = 360/10 * randomChoice + randomSpin; //without adding randomSpin it will just sorta slowly spin on the shortest route
         console.log(number);        
         console.log(choiceArray[randomChoice]);
         wheel.style.transform = `rotate(${number}deg)`; //rotate on Z axis

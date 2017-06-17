@@ -7,7 +7,7 @@
     border-radius: 100%;
     overflow: hidden;  
     transition: transform 2s;
-    transition-timing-function: ease-out;
+    transition-timing-function: cubic-bezier(0.5,-0.5,0,.9); /* randomly change numbers and pray it looks cool */
 }
 
 .piece > p {
