@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="assets/wheel.css" rel="stylesheet">
+    </head>
+    <body>
+    <div class="wheel">
+        <div class="piece"></div>
+        <div class="piece"></div>
+        <div class="piece"></div>
+        <div class="piece"></div>
+        <div class="piece"></div>
+        <div class="piece"></div>
+        <div class="piece"></div>
+        <div class="piece"></div>
+        <div class="piece"></div>
+        <div class="piece"></div>
+        <div id="spin">SPIN!</div>
+    </div>
+    </body>
+
+    <script type="text/javascript">
+    let click = document.getElementById("spin");
+    let wheel = document.getElementsByClassName("wheel")[0];
+    
+    document.addEventListener("transitionend", function(){
+        alert("wheel is damn done spinning");
+    })
+    click.addEventListener("click", function(){
+        wheel.style.transform = "rotate(1000deg)";
+    })
+    </script>
+</html>

@@ -1,0 +1,162 @@
+.wheel{
+    position: relative;
+    margin: 0 auto;
+    height: 300px;
+    width: 300px;
+    border: 3px solid black;
+    border-radius: 100%;
+    overflow: hidden;  
+    transition: transform 3s;
+}
+
+
+
+
+
+
+.piece:nth-child(1) {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 155px 50px 0 50px;
+    border-color: #ff00cc transparent transparent transparent;
+    position:absolute; 
+    left:50%; 
+    transform:translate(-50%); 
+}
+
+.piece:nth-child(2) {
+    left: 55px;
+    top: 15px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 155px 50px 0 50px;
+    border-color: blue transparent transparent transparent;
+    position: absolute;
+    transform: rotate(-36deg);
+}
+
+.piece:nth-child(3) {
+
+    right: 55px;
+    top: 15px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 155px 50px 0 50px;
+    border-color: yellow transparent transparent transparent;
+    position: absolute;
+    transform: rotate(36deg);
+}
+
+
+.piece:nth-child(4) {
+
+    right: 26px;
+    top: 52px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 155px 50px 0 50px;
+    border-color: pink transparent transparent transparent;
+    position: absolute;
+    transform: rotate(72deg);
+}
+
+.piece:nth-child(5) {
+
+    left: 26px;
+    top: 52px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 155px 50px 0 50px;
+    border-color: purple transparent transparent transparent;
+    position: absolute;
+    transform: rotate(-72deg)
+}
+
+.piece:nth-child(6) {
+
+    left: 26px;
+    top: 99px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 155px 50px 0 50px;
+    border-color: teal transparent transparent transparent;
+    position: absolute;
+    transform: rotate(-108deg);
+}
+
+.piece:nth-child(7) {
+
+    right: 26px;
+    top: 99px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 155px 50px 0 50px;
+    border-color: orange transparent transparent transparent;
+    position: absolute;
+    transform: rotate(108deg);
+}
+
+.piece:nth-child(8) {
+
+    right: 53px;
+    top: 138px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 155px 50px 0 50px;
+    border-color: greenyellow transparent transparent transparent;
+    position: absolute;
+    transform: rotate(144deg);
+
+}
+
+.piece:nth-child(9) {
+
+    left: 53px;
+    top: 138px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 155px 50px 0 50px;
+    border-color: red transparent transparent transparent;
+    position: absolute;
+    transform: rotate(-144deg);
+}
+
+.piece:nth-child(10) {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 155px 50px 0 50px;
+    border-color: black transparent transparent transparent;
+    position: absolute;
+    top: 147px;
+    left: 100px;
+    transform: rotate(-180deg);
+}
+
+
+
+
+#spin {
+    border: 2px solid black;
+    border-radius: 100%;
+    width: 75px;
+    height: 75px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: white;
+    text-align: center;
+    line-height: 70px;
+}
