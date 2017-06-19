@@ -10,10 +10,12 @@
 // }
 
 document.addEventListener("DOMContentLoaded", function(){   // Handler when the DOM is fully loaded
-
+let dingSound = new Audio("assets/ding.mp3");
+let puzzleRevealSound = new Audio("assets/puzzleRevealSound.mp3");
 
 
 function newGame(){
+        puzzleRevealSound.play();
     
 
     let currentPuzzle = pickPuzzle();
@@ -38,14 +40,17 @@ function newGame(){
         let wordSplit = currentPuzzle["row" + rowNum].split('');
         let firstLetterIdx = Math.floor((rowLength - wordSplit.length) / 2) + letterStart|| letterStart; //yay, I made up some math stuff to center them
             
-        wordSplit.forEach(function(elem){ //loops array for each letter
+        wordSplit.forEach(function(elem, idx){ //loops array for each letter
             let element = document.createElement("p");
             element.innerHTML = elem;
             
             document.getElementById(`item${firstLetterIdx}`).appendChild(element); //give it an id of what square it is in
             if (/[A-Z]/.test(elem)){
                 element.style.opacity = 0;
+                setTimeout(function(){
                 element.parentElement.className += " puzzlePiece"
+                }, idx * 80)
+                
                 element.className += " blank"
             }
             else if(elem !== " " ){
@@ -89,9 +94,15 @@ function newGame(){
         Array.prototype.forEach.call (nodeList, function (node, idx, array) { //stealing array method for nodeList
             if(e.key.toLowerCase() === node.innerHTML.toLowerCase()){
                 setTimeout(function(){
-                    node.className = "revealed"
+                    node.className = "revealed";
+                    function playSound() {
+                    var click = dingSound.cloneNode();
+            
+                    click.play();
+                };
+                    playSound();
                     winCheck(array);
-                },1000 * delayMulti) //throw an incrementing delay as it iterates, so multiple letters are not revealed at the same time            
+                },1500 * delayMulti) //throw an incrementing delay as it iterates, so multiple letters are not revealed at the same time (effect)            
             delayMulti++
             }        
         })
