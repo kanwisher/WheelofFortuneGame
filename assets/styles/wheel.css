@@ -16,7 +16,7 @@ body {
     border-radius: 100%;
     overflow: hidden;  
     transition: transform 4.5s;
-    transition-timing-function: cubic-bezier(0.5,-0.5,0,1.02); /* randomly change numbers and pray it looks cool */
+    transition-timing-function: cubic-bezier(0.5,-0.2,0,1.05); /* randomly change numbers and pray it looks cool */
 }
 
 .wrapper {

@@ -35,7 +35,7 @@
 
 
     document.addEventListener("transitionend", function(){
-        if ((prizeCheck >= 0 && prizeCheck <= 17) || prizeCheck >= 342 && prizeCheck <= 360 ) {
+        if ((prizeCheck >= 0 && prizeCheck <= 18) || prizeCheck >= 342 && prizeCheck <= 360 ) {
             prize = 500
             console.log("You won " + prize)
         }
@@ -60,7 +60,7 @@
             console.log("You went bankrupt")
             bankruptSound.play();
         }
-        else if (prizeCheck >= 198 && prizeCheck <= 232) {
+        else if (prizeCheck >= 198 && prizeCheck <= 233) {
             prize = 400
             console.log("You won " + prize)
         }
