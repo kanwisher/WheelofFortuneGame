@@ -7,7 +7,7 @@
 
 @font-face{
     font-family: "Helvetica condensed bold";
-    src: url("./helvetica-neue-lt-std-87-heavy-condensed-593e4667bc1e5.otf");
+    src: url("../fonts/helvetica-neue-lt-std-87-heavy-condensed-593e4667bc1e5.otf");
 }
 
 
@@ -24,13 +24,31 @@ heading > h1 {
 
 /* MAIN CONTENT */
 
+html {
+    height: 100%;
+}
+
+body {
+    background-image: url("../images/stars.jpg");
+    background-color: purple;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
 
 
 /*Puzzle Board */
+.wrapper {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    width: 740px;
+}
+
 .puzzle {
     background-color: black;
     width: 740px;
-    margin: 0 auto;
     padding: 10px;
     position: relative;
     animation-name: gameboardCycle;
