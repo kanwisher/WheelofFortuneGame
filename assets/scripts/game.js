@@ -118,7 +118,6 @@ document.addEventListener("DOMContentLoaded", function() { // Handler when the D
                     }
                 });
                 transitionEnded = true;
-                alert('done');
             }
         });
     }
