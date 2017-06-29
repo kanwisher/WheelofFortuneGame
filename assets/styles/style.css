@@ -3,6 +3,8 @@
 
 * {
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;    
 }
 
 @font-face{
@@ -11,15 +13,10 @@
 }
 
 
-
-
 /* HEADING */
 heading > h1 {
     text-align: center;
 }
-
-
-
 
 
 /* MAIN CONTENT */
@@ -41,11 +38,10 @@ body {
 /*Puzzle Board */
 
 
-
 .puzzle {
-    background-color: black;
-  /*  width: 740px;*/
-
+    top: 24px;
+    background: linear-gradient(154deg, #5490f3, #703add);
+    background-size: 400% 400%;
     width: 55%;
     height: 50%;
     min-width: 900px;
@@ -55,13 +51,11 @@ body {
     margin: 0 auto;
     padding: 10px;
     position: relative;
-    animation-name: gameboardCycle;
-    animation-duration: 10s;
-    animation-timing-function: ease-out;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    -webkit-animation: gameboardCycle 8s ease infinite;
+    -moz-animation: gameboardCycle 8s ease infinite;
+    animation: gameboardCycle 8s ease infinite;
     -webkit-clip-path: polygon(3% 15%, 10% 15%, 10% 0, 90% 1%, 90% 14%, 97% 14%, 97% 83%, 90% 83%, 90% 100%, 10% 100%, 10% 85%, 3% 85%);
-clip-path: polygon(3% 15%, 10% 15%, 10% 0, 90% 1%, 90% 14%, 97% 14%, 97% 83%, 90% 83%, 90% 100%, 10% 100%, 10% 85%, 3% 85%);
+    clip-path: polygon(6% 22%, 12% 22%, 12% 0, 88% 0%, 88% 21%, 94% 21%, 94% 80%, 88% 80%, 88% 105%, 12% 100%, 12% 79%, 6% 79%);
 }
 
 
@@ -97,13 +91,21 @@ clip-path: polygon(3% 15%, 10% 15%, 10% 0, 90% 1%, 90% 14%, 97% 14%, 97% 83%, 90
     background-color: white;
 }
 
-@keyframes gameboardCycle {
-    0%{ background-color: aqua;}
-    50%{background-color: blueviolet}
-    75%{background-color: aqua}
-    100%{background-color: blueviolet}
-
-    }
+@-webkit-keyframes gameboardCycle {
+    0%{background-position:9% 0%}
+    50%{background-position:92% 100%}
+    100%{background-position:9% 0%}
+}
+@-moz-keyframes gameboardCycle {
+    0%{background-position:9% 0%}
+    50%{background-position:92% 100%}
+    100%{background-position:9% 0%}
+}
+@keyframes gameboardCycle { 
+    0%{background-position:9% 0%}
+    50%{background-position:92% 100%}
+    100%{background-position:9% 0%}
+}
 
 
 @keyframes revealLetter {
@@ -129,12 +131,20 @@ clip-path: polygon(3% 15%, 10% 15%, 10% 0, 90% 1%, 90% 14%, 97% 14%, 97% 83%, 90
 
 #category {
     text-align: center;
-    font-family: "Gotham";
+    margin: 0 auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    font-family: 'Raleway', sans-serif;
+    background-color: rgba(86, 2, 152, 0.42);
+    color: white;
+    font-size: 32px;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    width: 80%;
+    text-transform: uppercase;
+    min-width: 900px;
+
 }
-
-
-
-
 
 /*    FOOTER  */
 

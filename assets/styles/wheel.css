@@ -3,9 +3,7 @@
     src: url(../fonts/clarenbd.ttf);
 }
 
-body {
-    font-family: claren;
-}
+
 
 .wheel{
     position: relative;
@@ -17,6 +15,7 @@ body {
     overflow: hidden;  
     transition: transform 4.5s;
     transition-timing-function: cubic-bezier(0.5,-0.2,0,1.05); /* randomly change numbers and pray it looks cool */
+    font-family: claren;
 }
 
 .wrapper {
@@ -37,10 +36,6 @@ body {
 
 }
 
-p, .money {
- text-shadow: 1px -1px 1px rgb(255, 255, 255);
-}
-
 .piece > p {
 
     position: relative;
@@ -59,6 +54,7 @@ p, .money {
     font-size: 25px;
     top: 35px;
     left: -17px;
+    text-shadow: 1px -1px 1px rgb(255, 255, 255);
 }
 
 #bankrupt {
