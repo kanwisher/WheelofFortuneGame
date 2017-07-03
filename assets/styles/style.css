@@ -7,6 +7,23 @@
     -moz-osx-font-smoothing: grayscale;    
 }
 
+html {
+   min-height: 100%;
+   overflow: hidden;
+
+}
+
+body {
+    background-image: url("../images/stars.jpg");
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    margin: 0;
+
+}
+
+
 @font-face{
     font-family: "Helvetica condensed bold";
     src: url("../fonts/helvetica-neue-lt-std-87-heavy-condensed-593e4667bc1e5.otf");
@@ -16,22 +33,11 @@
 /* HEADING */
 heading > h1 {
     text-align: center;
+    color: white;
 }
 
 
 /* MAIN CONTENT */
-
-html, body{
-    height: 100%;
-}
-
-body {
-    background-image: url("../images/stars.jpg");
-    background-color: black;
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: cover;
-}
 
 
 
@@ -39,15 +45,11 @@ body {
 
 
 .puzzle {
-/*    -webkit-clip-path: polygon(3% 15%, 10% 15%, 10% 0, 90% 1%, 90% 14%, 97% 14%, 97% 83%, 90% 83%, 90% 100%, 10% 100%, 10% 85%, 3% 85%);
-    clip-path: polygon(6% 22%, 12% 22%, 12% 0, 88% 0%, 88% 21%, 94% 21%, 94% 80%, 88% 80%, 88% 105%, 12% 100%, 12% 79%, 6% 79%);*/
+    -webkit-clip-path: polygon(3% 15%, 10% 15%, 10% 0, 90% 1%, 90% 14%, 97% 14%, 97% 83%, 90% 83%, 90% 100%, 10% 100%, 10% 85%, 3% 85%);
+    clip-path: polygon(6% 22%, 12% 22%, 12% 0, 88% 0%, 88% 21%, 94% 21%, 94% 80%, 88% 80%, 88% 105%, 12% 100%, 12% 79%, 6% 79%);
     background-color: black;
-    width: 55%;
-    height: 50%;
-    min-width: 900px;
-    min-height: 400px;
-    max-height: 450px;
-    max-width: 1000px;
+    width: 900px;
+    height: 400px;
     margin: 0 auto;
     padding: 10px;
     position: relative;
@@ -56,6 +58,7 @@ body {
     animation-timing-function: ease-out;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    overflow: hidden;
 
 }
 
@@ -136,14 +139,4 @@ body {
     text-transform: uppercase;
     min-width: 900px;
 
-}
-
-/*    FOOTER  */
-
-footer {
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
 }
