@@ -10,14 +10,17 @@
 // }
 
 document.addEventListener("DOMContentLoaded", function() { // Handler when the DOM is fully loaded
+
     let dingSound = new Audio("assets/sounds/ding.mp3");
     let puzzleRevealSound = new Audio("assets/sounds/puzzleRevealSound.mp3");
+    let playerScore = 0;
 
-    function newGame() {
+    function newRound() {
         puzzleRevealSound.play();
-        let transitionEnded = true; //wait for letters to be revealed before next action
+        let letterGuessed = [];
         let currentPuzzle = pickPuzzle();
-        console.log(currentPuzzle);
+        let transitionEnded = true;
+        console.log(currentPuzzle); //don't cheat!
 
         document.getElementById('category').innerHTML = currentPuzzle.subject; //set puzzle category
         if (currentPuzzle.rowA) { //build out letters for each row by using function
@@ -60,7 +63,6 @@ document.addEventListener("DOMContentLoaded", function() { // Handler when the D
 
         function winCheck(array) { //this works
             if (array.length === 1) { //if last item was just changed to revealed 
-                console.log(array);
                 console.log("You win!!!");
             }
         }
@@ -108,18 +110,20 @@ document.addEventListener("DOMContentLoaded", function() { // Handler when the D
                             node.className = "revealed";
 
                             function playSound() {
-                                var click = dingSound.cloneNode();
+                                var click = dingSound.cloneNode(); //so sounds will play over each other if needed
                                 click.play();
                             }
                             playSound();
                             winCheck(array);
-                        }, 1500 * delayMulti); //throw an incrementing delay as it iterates, so multiple letters are not revealed at the same time (effect)            
+                        }, 1200 * delayMulti); //throw an incrementing delay as it iterates, so multiple letters are not revealed at the same time (effect)            
                         delayMulti++;
                     }
                 });
-                transitionEnded = true;
+                setTimeout(function() {
+                    transitionEnded = true;
+                }, 1200 * delayMulti); //Please noone look at this, I'm ashamed
             }
         });
     }
-    newGame();
+    newRound();
 });
