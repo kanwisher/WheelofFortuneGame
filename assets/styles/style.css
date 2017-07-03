@@ -9,7 +9,6 @@
 
 html {
    min-height: 100%;
-   overflow: hidden;
 
 }
 
@@ -31,11 +30,11 @@ body {
 
 
 /* HEADING */
-heading > h1 {
-    text-align: center;
-    color: white;
+#wheelLogo {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 30px;
 }
-
 
 /* MAIN CONTENT */
 
