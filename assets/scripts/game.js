@@ -91,10 +91,38 @@ document.addEventListener("DOMContentLoaded", function() { // Handler when the D
             return currentPuzzle;
         }
 
+        function toggleGameChoices(){
+            if(document.getElementById("gameChoices").style.display === "none"){
+                document.getElementById("gameChoices").style.display = "block";
+            }else {
+                document.getElementById("gameChoices").style.display = "none";
+            }
+        }
+
+        function toggleWheel(){
+            if(document.getElementsByClassName("wrapper")[0].style.display === "none"){
+                document.getElementsByClassName("wrapper")[0].style.display = "block";
+            }else {
+                document.getElementsByClassName("wrapper")[0].style.display = "none";
+            }
+        }
+
         // document.addEventListener("animationend", function(e) { //unreliable for me
         //     transitionEnded = true;
         //     console.log('ended');
         // });
+        document.getElementById("spinButton").addEventListener('click', function(){
+            toggleGameChoices();
+            toggleWheel();
+        });
+
+        document.getElementById("buyVowelButton").addEventListener('click', function(){
+            alert("Buy");
+        });
+
+        document.getElementById("solveButton").addEventListener('click', function(){
+            alert("Solve");
+        });
 
         document.addEventListener("keyup", function(e) {
             if (transitionEnded) {

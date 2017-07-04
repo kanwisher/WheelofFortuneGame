@@ -24,11 +24,11 @@
             prize = 700;
             console.log("You won " + prize);
         }
-        else if (prizeCheck >= 127 && prizeCheck <= 161) {
+        else if (prizeCheck >= 127 && prizeCheck <= 160) {
             prize = 600;
             console.log("You won " + prize);
         }
-        else if (prizeCheck >= 162 && prizeCheck <= 197) {
+        else if (prizeCheck >= 161 && prizeCheck <= 197) {
             prize = 0;
             console.log("You went bankrupt");
             bankruptSound.play();

@@ -3,7 +3,12 @@
     src: url(../fonts/clarenbd.ttf);
 }
 
-
+.wrapper {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}
 
 .wheel{
     position: relative;
@@ -18,12 +23,7 @@
     font-family: claren;
 }
 
-.wrapper {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    margin: 0 auto;
-}
+
 .marker {
     position: absolute;
     color: white;
@@ -176,5 +176,6 @@
     right: 0;
     background-color: #71c997;
     text-align: center;
+    cursor: pointer;
 }
 

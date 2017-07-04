@@ -1,47 +1,40 @@
 /* Global STYLES */
 
-
 * {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;    
+    -moz-osx-font-smoothing: grayscale;
 }
 
 html {
-   min-height: 100%;
-
-}
-
-body {
+    min-height: 100%;
     background-image: url("../images/stars.jpg");
     background-color: black;
     background-repeat: no-repeat;
     background-position: center top;
     background-size: cover;
-    margin: 0;
-
 }
 
-
-@font-face{
+@font-face {
     font-family: "Helvetica condensed bold";
     src: url("../fonts/helvetica-neue-lt-std-87-heavy-condensed-593e4667bc1e5.otf");
 }
 
 
 /* HEADING */
+
 #wheelLogo {
     display: block;
     margin: 0 auto;
+    margin-top: 20px;
     margin-bottom: 30px;
 }
+
 
 /* MAIN CONTENT */
 
 
-
 /*Puzzle Board */
-
 
 .puzzle {
     -webkit-clip-path: polygon(3% 15%, 10% 15%, 10% 0, 90% 1%, 90% 14%, 97% 14%, 97% 83%, 90% 83%, 90% 100%, 10% 100%, 10% 85%, 3% 85%);
@@ -58,9 +51,7 @@ body {
     animation-iteration-count: infinite;
     animation-direction: alternate;
     overflow: hidden;
-
 }
-
 
 .puzzle .letterRow {
     text-align: center;
@@ -69,7 +60,7 @@ body {
 
 .puzzle .letterbox {
     border: solid 5px black;
-  /*  height: 75px;
+    /*  height: 75px;
     width: 50px;*/
     height: 98%;
     width: 6%;
@@ -83,7 +74,7 @@ body {
 
 .puzzle .letterbox > p {
     font-family: "Helvetica condensed bold";
-    font-size: 60px;
+    font-size: 54px;
     margin: 0;
     width: 100%;
     height: 100%;
@@ -95,31 +86,46 @@ body {
 }
 
 @keyframes gameboardCycle {
-    0%{ background-color: aqua;}
-    50%{background-color: blueviolet}
-    75%{background-color: aqua}
-    100%{background-color: blueviolet}
-
+    0% {
+        background-color: aqua;
     }
+    50% {
+        background-color: blueviolet
+    }
+    75% {
+        background-color: aqua
+    }
+    100% {
+        background-color: blueviolet
+    }
+}
 
 @keyframes revealLetter {
-
-    0% { background-color: blue;
-    color: blue}
-    40% { background-color: blue;
-    color: blue}
-    40.01% { background-color: white;
-    color: black;
-    opacity: 1}
-    100% {opacity: 1}
+    0% {
+        background-color: blue;
+        color: blue
+    }
+    40% {
+        background-color: blue;
+        color: blue
+    }
+    40.01% {
+        background-color: white;
+        color: black;
+        opacity: 1
+    }
+    100% {
+        opacity: 1
+    }
 }
 
 .revealed {
     animation-name: revealLetter;
     animation-duration: 2s;
     animation-direction: normal;
-    animation-fill-mode:forwards;
+    animation-fill-mode: forwards;
 }
+
 
 /* Category */
 
@@ -137,5 +143,67 @@ body {
     width: 80%;
     text-transform: uppercase;
     min-width: 900px;
+}
 
+
+/* Buttons */
+
+#gameChoices {
+    height: 100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+#spinButton,
+#buyVowelButton,
+#solveButton {
+    height: 75px;
+    width: 200px;
+    display: inline-block;
+    margin: 0 20px 0 20px;
+    font-size: 25px;
+    font-family: tahoma;
+    color: white;
+    text-shadow: 2px 2px 0 #3c4440;
+    border: solid 2px white;
+    border-radius: 15px 30px;
+    cursor: pointer;
+    position: relative;
+}
+
+#spinButton > p,
+#buyVowelButton > p,
+#solveButton > p {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#buyVowelButton {
+    background: #db4437;
+}
+
+#spinButton {
+    background: #ff9800;
+}
+
+#solveButton {
+    background: #009688;
+}
+
+#buyVowelButton:hover {
+    background: #e9594c;
+}
+
+#spinButton:hover {
+    background: #ffad33;
+}
+
+#solveButton:hover {
+    background: #0fb8a8;
 }
