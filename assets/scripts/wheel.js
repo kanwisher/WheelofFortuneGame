@@ -24,11 +24,11 @@
             prize = 700;
             updateScore(prize);
         }
-        else if (prizeCheck >= 127 && prizeCheck <= 160) {
+        else if (prizeCheck >= 127 && prizeCheck <= 162) {
             prize = 600;
             updateScore(prize);
         }
-        else if (prizeCheck >= 161 && prizeCheck <= 197) {
+        else if (prizeCheck >= 163 && prizeCheck <= 197) {
             prize = 0;
             bankruptSound.play();
         }
@@ -57,12 +57,12 @@
 
     function updateScore(addScore){
         playerScore += addScore;
-        document.getElementById("moneyScore").innerHTML = "<p>$ " + playerScore + "</p>";
+        document.getElementById("moneyScore").innerHTML = "<p>$" + playerScore + "</p>";
     }
 
     click.addEventListener("click", function(){
         rotations++; //increment multiplier so that wheel will always spin around 3 times on randomSpin, this number could be about anything as long as it higher than the last number ( but a larger jump would increase the amount of spins);
-        let randomChoice = Math.floor((Math.random() * 20));
+        let randomChoice = Math.floor((Math.random() * 100));
         let randomSpin = rotations * 720; //keeps increasing the rotate degrees so that the wheel spins same direction and always 3 times for looks
         let number = 360/40 * randomChoice + randomSpin; //without adding randomSpin it will just sorta slowly spin on the shortest route, basically it's incrementing the rotate value
         console.log(number);        
