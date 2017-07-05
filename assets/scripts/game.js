@@ -9,7 +9,7 @@
 //     "rowD": ""
 // }
 
-document.addEventListener("DOMContentLoaded", function() { // Handler when the DOM is fully loaded
+// document.addEventListener("DOMContentLoaded", function() { // Handler when the DOM is fully loaded
 
     let dingSound = new Audio("assets/sounds/ding.mp3");
     let puzzleRevealSound = new Audio("assets/sounds/puzzleRevealSound.mp3");
@@ -91,19 +91,19 @@ document.addEventListener("DOMContentLoaded", function() { // Handler when the D
             return currentPuzzle;
         }
 
-        function toggleGameChoices(){
-            if(document.getElementById("gameChoices").style.display === "none"){
-                document.getElementById("gameChoices").style.display = "block";
+        function toggleVisibilityID(name){
+            if(document.getElementById(name).style.display === "none"){
+                document.getElementById(name).style.display = "block";
             }else {
-                document.getElementById("gameChoices").style.display = "none";
+                document.getElementById(name).style.display = "none";
             }
         }
 
-        function toggleWheel(){
-            if(document.getElementsByClassName("wrapper")[0].style.display === "none"){
-                document.getElementsByClassName("wrapper")[0].style.display = "block";
+        function toggleVisibilityClass(name){
+            if(document.getElementsByClassName(name)[0].style.display === "none"){
+                document.getElementsByClassName(name)[0].style.display = "block";
             }else {
-                document.getElementsByClassName("wrapper")[0].style.display = "none";
+                document.getElementsByClassName(name)[0].style.display = "none";
             }
         }
 
@@ -112,12 +112,13 @@ document.addEventListener("DOMContentLoaded", function() { // Handler when the D
         //     console.log('ended');
         // });
         document.getElementById("spinButton").addEventListener('click', function(){
-            toggleGameChoices();
-            toggleWheel();
+            toggleVisibilityID("gameChoices");
+            toggleVisibilityClass("wrapper");
         });
 
         document.getElementById("buyVowelButton").addEventListener('click', function(){
-            alert("Buy");
+            toggleVisibilityID("gameChoices");
+            toggleVisibilityID("vowels");
         });
 
         document.getElementById("solveButton").addEventListener('click', function(){
@@ -154,4 +155,4 @@ document.addEventListener("DOMContentLoaded", function() { // Handler when the D
         });
     }
     newRound();
-});
+// });
