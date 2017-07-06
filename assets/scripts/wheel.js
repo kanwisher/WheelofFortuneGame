@@ -10,23 +10,23 @@
     wheel.addEventListener("transitionend", function(){
         if ((prizeCheck >= 0 && prizeCheck <= 18) || prizeCheck >= 342 && prizeCheck <= 360 ) {
             prize = 500;
-            updateScore(prize);
+            // updateScore(prize);
         }
         else if (prizeCheck >= 19 && prizeCheck <= 55){
             prize = 900;
-            updateScore(prize);
+            // updateScore(prize);
         }
         else if (prizeCheck >= 56 && prizeCheck <= 91) {
             prize = 800;
-            updateScore(prize);
+            // updateScore(prize);
         }
         else if (prizeCheck >= 92 && prizeCheck <= 126) {
             prize = 700;
-            updateScore(prize);
+            // updateScore(prize);
         }
         else if (prizeCheck >= 127 && prizeCheck <= 162) {
             prize = 600;
-            updateScore(prize);
+            // updateScore(prize);
         }
         else if (prizeCheck >= 163 && prizeCheck <= 197) {
             prize = 0;
@@ -34,31 +34,38 @@
         }
         else if (prizeCheck >= 198 && prizeCheck <= 233) {
             prize = 400;
-            updateScore(prize);
+            // updateScore(prize);
         }
         else if (prizeCheck >= 234 && prizeCheck <= 268) {
             prize = 300;
-            updateScore(prize);
+            // updateScore(prize);
         }
         else if (prizeCheck >= 269 && prizeCheck <= 304) {
             prize = 200;
-            updateScore(prize);
+            // updateScore(prize);
         }
         else if (prizeCheck >= 305 && prizeCheck <= 341) {
             prize = 100;
-            updateScore(prize);
+            // updateScore(prize);
         }
         else {
             alert("I seem to have trouble determining where the wheel landed, here is $5000");
             prize = 5000;
-            updateScore(prize);
+            // updateScore(prize);
         }
+
+        wheelEnded = true;
+        document.getElementById("messageArea").innerHTML = "<p>$" + prize + ", choose a consonant";
+
+        toggleVisibilityID("gameChoices");
+        toggleVisibilityClass("wrapper");
+        document.getElementById("gameChoices").className += " disabled";
     });
 
-    function updateScore(addScore){
-        playerScore += addScore;
-        document.getElementById("moneyScore").innerHTML = "<p>$" + playerScore + "</p>";
-    }
+    // function updateScore(addScore){
+    //     playerScore += addScore;
+    //     document.getElementById("moneyScore").innerHTML = "<p>$" + playerScore + "</p>";
+    // }
 
     click.addEventListener("click", function(){
         rotations++; //increment multiplier so that wheel will always spin around 3 times on randomSpin, this number could be about anything as long as it higher than the last number ( but a larger jump would increase the amount of spins);

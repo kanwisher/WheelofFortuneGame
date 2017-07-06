@@ -14,7 +14,6 @@ html {
     background-repeat: no-repeat;
     background-position: center top;
     background-size: cover;
-    overflow: hidden;
 }
 
 @font-face {
@@ -264,4 +263,9 @@ html {
 
 #solveButton:hover {
     background: #0fb8a8;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.4;
 }
