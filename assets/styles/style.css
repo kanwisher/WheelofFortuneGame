@@ -5,6 +5,11 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     cursor: default;
+    -moz-user-select: none; /* sweet, now you can't highlight things and select them */
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 html {
@@ -263,6 +268,27 @@ html {
 
 #solveButton:hover {
     background: #0fb8a8;
+}
+
+#goBackButton {
+    height: 60px;
+    width: 100px;
+    display: block;
+    margin: 0 20px 0 20px;
+    font-size: 18px;
+    font-family: tahoma;
+    color: white;
+    text-shadow: 2px 2px 0 #3c4440;
+    border: solid 2px white;
+    border-radius: 15px 30px;
+    cursor: pointer;
+    position: relative;
+    margin: 30px auto;
+    background: gray;
+}
+
+#goBackButton p {
+    cursor: pointer;
 }
 
 .disabled {

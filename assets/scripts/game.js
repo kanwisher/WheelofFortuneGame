@@ -13,6 +13,7 @@
 
     let dingSound = new Audio("assets/sounds/ding.mp3");
     let puzzleRevealSound = new Audio("assets/sounds/puzzleRevealSound.mp3");
+    let buzzerSound = new Audio("assets/sounds/buzzer.mp3");
     let playerScore = 0;
     let wheelEnded;
     let transitionEnded;
@@ -115,6 +116,7 @@
 
     function guessEnded(){
         document.getElementById("gameChoices").classList.remove("disabled");
+        document.getElementById("messageArea").innerHTML = "<p>Select your choice below</p>";
     }
 
     // document.addEventListener("animationend", function(e) { //unreliable for me
@@ -135,11 +137,26 @@
         alert("Solve");
     });
 
+    document.addEventListener("click", function(e){
+        if(e.target.matches('.vowelButton p, .vowelButton')){ //if user clicks text or button div
+
+            console.log("match!");
+        }
+    });
+
+
+
+
     document.addEventListener("keyup", function(e) {
         if (wheelEnded) {
             let userGuess = e.key;
             if(userGuess === "a" || userGuess === "e" || userGuess === "i" || userGuess === "o" || userGuess === "u"){
-                alert("please choose a consonant");
+                buzzerSound.play();
+                document.getElementById("messageArea").innerHTML = "<p style='color: yellow'>Vowels must be purchased</p>";
+                setTimeout(function(){
+                     document.getElementById("messageArea").innerHTML = "<p>$" + prize + ", choose a consonant";
+                },1500);
+
             }else{
 
                 wheelEnded = false;
@@ -155,7 +172,12 @@
                         letterFound = true;
                         setTimeout(function() {
                             node.className = "revealed";
-
+                            playerScore += prize;
+                            if(playerScore < 0){
+                                document.getElementById("moneyScore").innerHTML = `<p>-$${Math.abs(playerScore)}</p>`;
+                            }else{
+                                document.getElementById("moneyScore").innerHTML = `<p>$${playerScore}</p>`;
+                            }
                             function playSound() {
                                 var click = dingSound.cloneNode(); //so sounds will play over each other if needed
                                 click.play();
@@ -167,10 +189,15 @@
                     }                   
                 });
                 if (!letterFound){
-                            alert("wrong guess");
-                }
-                
+                            buzzerSound.play();
+                            playerScore -= prize;
+                            if(playerScore < 0){
+                                document.getElementById("moneyScore").innerHTML = `<p>-$${Math.abs(playerScore)}</p>`;
+                            }else{
+                                document.getElementById("moneyScore").innerHTML = `<p>$${playerScore}</p>`;
+                            }
 
+                }
                 setTimeout(function() {
                     guessEnded();
                 }, 1200 * delayMulti); //Please noone look at this, I'm ashamed
