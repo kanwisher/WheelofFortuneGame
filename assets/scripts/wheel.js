@@ -5,6 +5,7 @@
     let prizeCheck;
     let spinSound = new Audio('assets/sounds/spinSound.mp3');
     let bankruptSound =  new Audio('assets/sounds/bankrupt.mp3');
+    let wheelEnabled = false;
 
 
     wheel.addEventListener("transitionend", function(){
@@ -28,11 +29,11 @@
             prize = 600;
             // updateScore(prize);
         }
-        else if (prizeCheck >= 163 && prizeCheck <= 197) {
+        else if (prizeCheck >= 163 && prizeCheck <= 198) {
             prize = 0;
             bankruptSound.play();
         }
-        else if (prizeCheck >= 198 && prizeCheck <= 233) {
+        else if (prizeCheck >= 199 && prizeCheck <= 233) {
             prize = 400;
             // updateScore(prize);
         }
@@ -56,7 +57,6 @@
 
         wheelEnded = true;
         document.getElementById("messageArea").innerHTML = "<p>$" + prize + ", choose a consonant";
-
         toggleVisibilityID("gameChoices");
         toggleVisibilityClass("wrapper");
         document.getElementById("gameChoices").className += " disabled";
@@ -68,15 +68,18 @@
     // }
 
     click.addEventListener("click", function(){
-        rotations++; //increment multiplier so that wheel will always spin around 3 times on randomSpin, this number could be about anything as long as it higher than the last number ( but a larger jump would increase the amount of spins);
-        let randomChoice = Math.floor((Math.random() * 100));
-        let randomSpin = rotations * 720; //keeps increasing the rotate degrees so that the wheel spins same direction and always 3 times for looks
-        let number = 360/40 * randomChoice + randomSpin; //without adding randomSpin it will just sorta slowly spin on the shortest route, basically it's incrementing the rotate value
-        console.log(number);        
-        prizeCheck = number % 360; //gives me a number where I can compare it against the rotate degrees
-        setTimeout(function(){
-            spinSound.play();
-        },1100);        
-        
-        wheel.style.transform = `rotate(${number}deg)`;
+        if(wheelEnabled){
+            wheelEnabled = false;
+            rotations++; //increment multiplier so that wheel will always spin around 3 times on randomSpin, this number could be about anything as long as it higher than the last number ( but a larger jump would increase the amount of spins);
+            let randomChoice = Math.floor((Math.random() * 100));
+            let randomSpin = rotations * 720; //keeps increasing the rotate degrees so that the wheel spins same direction and always 3 times for looks
+            let number = 360/40 * randomChoice + randomSpin; //without adding randomSpin it will just sorta slowly spin on the shortest route, basically it's incrementing the rotate value
+            console.log(number);        
+            prizeCheck = number % 360; //gives me a number where I can compare it against the rotate degrees
+            setTimeout(function(){
+                spinSound.play();
+            },1100);        
+            
+            wheel.style.transform = `rotate(${number}deg)`;             
+        }
     });

@@ -19,13 +19,15 @@
     let transitionEnded;
     let currentPuzzle;
     let lettersGuessed;
+    let stringSolution;
 
     function newRound() {
         puzzleRevealSound.play();
         lettersGuessed = [];
         currentPuzzle = pickPuzzle();
         transitionEnded = true;
-        console.log(currentPuzzle); //don't cheat!
+        stringSolution = puzzleToString(currentPuzzle);
+        console.log(stringSolution);
 
         document.getElementById('category').innerHTML = currentPuzzle.subject; //set puzzle category
         if (currentPuzzle.rowA) { //build out letters for each row by using function
@@ -67,6 +69,25 @@
             firstLetterIdx++;
         });
     }
+
+    function puzzleToString(puzzleObject){
+        let stringArray = [];
+        if(puzzleObject.rowA){
+            stringArray.push(puzzleObject.rowA);
+        }
+        if(puzzleObject.rowB){
+            stringArray.push(puzzleObject.rowB);
+        }
+        if(puzzleObject.rowC){
+            stringArray.push(puzzleObject.rowC);
+        }
+        if(puzzleObject.rowD){
+            stringArray.push(puzzleObject.rowD);
+        }
+        return stringArray.join(" ");
+    }
+
+                            
 
     function winCheck(array) { //this works
         if (array.length === 1) { //if last item was just changed to revealed 
@@ -119,11 +140,55 @@
         document.getElementById("messageArea").innerHTML = "<p>Select your choice below</p>";
     }
 
+    function checkGuess(userGuess){
+        wheelEnded = false;
+        transitionEnded = false;
+        
+        let nodeList = document.querySelectorAll(".blank");
+        let delayMulti = 0;
+        let letterFound = false;
+
+        Array.prototype.forEach.call(nodeList, function(node, idx, array) { //stealing array method for nodeList
+            if (userGuess.toLowerCase() === node.innerHTML.toLowerCase()) {
+                letterFound = true;
+                setTimeout(function() {
+                    node.className = "revealed";
+                    playerScore += prize;
+                    if(playerScore < 0){
+                        document.getElementById("moneyScore").innerHTML = `<p>-$${Math.abs(playerScore)}</p>`; //so I can show negative symbol before dollar sign (visual);
+                    }else{
+                        document.getElementById("moneyScore").innerHTML = `<p>$${playerScore}</p>`;
+                    }
+                    function playSound() {
+                        var click = dingSound.cloneNode(); //so sounds will play over each other if needed
+                        click.play();
+                    }
+                    playSound();
+                    winCheck(array);
+                }, 1200 * delayMulti); //throw an incrementing delay as it iterates, so multiple letters are not revealed at the same time (effect)            
+                delayMulti++;
+            }                   
+        });
+        if (!letterFound){
+            buzzerSound.play();
+            playerScore -= prize;
+            if(playerScore < 0){
+                document.getElementById("moneyScore").innerHTML = `<p>-$${Math.abs(playerScore)}</p>`;
+            }else{
+                document.getElementById("moneyScore").innerHTML = `<p>$${playerScore}</p>`;
+            }
+        }
+        setTimeout(function() {
+            guessEnded();
+        }, 1200 * delayMulti); //Please noone look at this, I'm ashamed
+    }
+
     // document.addEventListener("animationend", function(e) { //unreliable for me
     //     transitionEnded = true;
     //     console.log('ended');
     // });
     document.getElementById("spinButton").addEventListener('click', function(){
+        wheelEnabled = true;
         toggleVisibilityID("gameChoices");
         toggleVisibilityClass("wrapper");
     });
@@ -137,12 +202,19 @@
         alert("Solve");
     });
 
-    document.addEventListener("click", function(e){
-        if(e.target.matches('.vowelButton p, .vowelButton')){ //if user clicks text or button div
+    document.getElementById("goBackButton").addEventListener('click', function(){
+        toggleVisibilityID("vowels");
+        toggleVisibilityID("gameChoices");
+    })
 
-            console.log("match!");
-        }
-    });
+    var vowelList = document.getElementsByClassName('vowelButton');
+    for(let i = 0; i < vowelList.length; i++){
+        vowelList[i].addEventListener("click", function(e){ //vowell buttons
+            let vowelClicked = e.target.innerHTML;
+            prize = 300;
+            checkGuess(vowelClicked);
+        });
+    }
 
 
 
@@ -158,49 +230,7 @@
                 },1500);
 
             }else{
-
-                wheelEnded = false;
-                transitionEnded = false;
-                
-                let nodeList = document.querySelectorAll(".blank");
-                let delayMulti = 0;
-                let letterFound = false;
-
-
-                Array.prototype.forEach.call(nodeList, function(node, idx, array) { //stealing array method for nodeList
-                    if (e.key.toLowerCase() === node.innerHTML.toLowerCase()) {
-                        letterFound = true;
-                        setTimeout(function() {
-                            node.className = "revealed";
-                            playerScore += prize;
-                            if(playerScore < 0){
-                                document.getElementById("moneyScore").innerHTML = `<p>-$${Math.abs(playerScore)}</p>`;
-                            }else{
-                                document.getElementById("moneyScore").innerHTML = `<p>$${playerScore}</p>`;
-                            }
-                            function playSound() {
-                                var click = dingSound.cloneNode(); //so sounds will play over each other if needed
-                                click.play();
-                            }
-                            playSound();
-                            winCheck(array);
-                        }, 1200 * delayMulti); //throw an incrementing delay as it iterates, so multiple letters are not revealed at the same time (effect)            
-                        delayMulti++;
-                    }                   
-                });
-                if (!letterFound){
-                            buzzerSound.play();
-                            playerScore -= prize;
-                            if(playerScore < 0){
-                                document.getElementById("moneyScore").innerHTML = `<p>-$${Math.abs(playerScore)}</p>`;
-                            }else{
-                                document.getElementById("moneyScore").innerHTML = `<p>$${playerScore}</p>`;
-                            }
-
-                }
-                setTimeout(function() {
-                    guessEnded();
-                }, 1200 * delayMulti); //Please noone look at this, I'm ashamed
+                checkGuess(userGuess);
             }
         }
     });

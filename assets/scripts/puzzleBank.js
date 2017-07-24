@@ -71,7 +71,7 @@ let puzzleBank =
     "rowD": ""
     },
     {
-    "subject": "song ly",
+    "subject": "Song",
     "rowA": "A PARTRIDGE IN",
     "rowB": "A PEAR TREE",
     "rowC": "",
@@ -113,7 +113,7 @@ let puzzleBank =
     "rowD": ""
     },
     {
-    "subject": "Classic  Movies\n",
+    "subject": "Classic  Movies",
     "rowA": "A STREETCAR",
     "rowB": "NAMED DESIRE",
     "rowC": "",
@@ -5825,7 +5825,7 @@ let puzzleBank =
     "rowD": ""
     },
     {
-    "subject": "Title/Auther",
+    "subject": "Title/Author",
     "rowA": "OLIVER TWIST",
     "rowB": "BY CHARLES",
     "rowC": "DICKINS",
@@ -15674,7 +15674,7 @@ let puzzleBank =
     "rowD": ""
     },
     {
-    "subject": "ThingS",
+    "subject": "Things",
     "rowA": "QUARTERS DIMES",
     "rowB": "& NICKELS",
     "rowC": "",
