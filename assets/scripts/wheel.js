@@ -56,10 +56,17 @@
         }
 
         wheelEnded = true;
-        document.getElementById("messageArea").innerHTML = "<p>$" + prize + ", choose a consonant";
-        toggleVisibilityID("gameChoices");
-        toggleVisibilityClass("wrapper");
-        document.getElementById("gameChoices").className += " disabled";
+        if(prize){
+            document.getElementById("messageArea").innerHTML = "<p>$" + prize + ", choose a consonant";
+            toggleVisibilityID("gameChoices");
+            toggleVisibilityClass("wrapper");
+            document.getElementById("gameChoices").className += " disabled";
+        } else {
+            wheelEnded = false;
+            transitionEnded = false;
+            playerScore = 0;
+            guessEnded();
+        }
     });
 
     // function updateScore(addScore){

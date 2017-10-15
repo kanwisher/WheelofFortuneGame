@@ -53,7 +53,8 @@
         wordSplit.forEach(function(elem, idx) { //loops array for each letter
             let element = document.createElement("p");
             element.innerHTML = elem;
-
+            
+            document.getElementById(`item${firstLetterIdx}`).innerHTML = '';
             document.getElementById(`item${firstLetterIdx}`).appendChild(element); //give it an id of what square it is in
             if (/[A-Z]/.test(elem)) {
                 element.style.opacity = 0;
@@ -90,8 +91,9 @@
                             
 
     function winCheck(array) { //this works
-        if (array.length === 1) { //if last item was just changed to revealed 
-            console.log("You win!!!");
+        if (array.length <= 1) { //if last item was just changed to revealed 
+            alert("You win!!!");
+            newRound();
         }
     }
 
@@ -154,11 +156,8 @@
                 setTimeout(function() {
                     node.className = "revealed";
                     playerScore += prize;
-                    if(playerScore < 0){
-                        document.getElementById("moneyScore").innerHTML = `<p>-$${Math.abs(playerScore)}</p>`; //so I can show negative symbol before dollar sign (visual);
-                    }else{
-                        document.getElementById("moneyScore").innerHTML = `<p>$${playerScore}</p>`;
-                    }
+                    document.getElementById("moneyScore").innerHTML = `<p>$${playerScore}</p>`;
+                    
                     function playSound() {
                         var click = dingSound.cloneNode(); //so sounds will play over each other if needed
                         click.play();
@@ -173,14 +172,13 @@
             buzzerSound.play();
             playerScore -= prize;
             if(playerScore < 0){
-                document.getElementById("moneyScore").innerHTML = `<p>-$${Math.abs(playerScore)}</p>`;
-            }else{
-                document.getElementById("moneyScore").innerHTML = `<p>$${playerScore}</p>`;
+                playerScore = 0;
             }
+                document.getElementById("moneyScore").innerHTML = `<p>$${playerScore}</p>`;
         }
         setTimeout(function() {
             guessEnded();
-        }, 1200 * delayMulti); //Please noone look at this, I'm ashamed
+        }, 1200 * delayMulti);
     }
 
     // document.addEventListener("animationend", function(e) { //unreliable for me
@@ -215,9 +213,6 @@
             checkGuess(vowelClicked);
         });
     }
-
-
-
 
     document.addEventListener("keyup", function(e) {
         if (wheelEnded) {
