@@ -187,6 +187,7 @@
     // });
     document.getElementById("spinButton").addEventListener('click', function(){
         wheelEnabled = true;
+        document.getElementById("messageArea").innerHTML = "<p>Spin the wheel</p>";
         toggleVisibilityID("gameChoices");
         toggleVisibilityClass("wrapper");
     });
@@ -197,10 +198,16 @@
     });
 
     document.getElementById("solveButton").addEventListener('click', function(){
-        alert("Solve");
+        const solution = prompt("For the solve...");
+        if (solution.trim().toUpperCase() === stringSolution.trim().toUpperCase()){
+            alert("You win!");
+        } else {
+            alert("You lose!");
+        }
     });
 
     document.getElementById("goBackButton").addEventListener('click', function(){
+        document.getElementById("messageArea").innerHTML = "<p>Select your choice below</p>";
         toggleVisibilityID("vowels");
         toggleVisibilityID("gameChoices");
     })
@@ -208,9 +215,14 @@
     var vowelList = document.getElementsByClassName('vowelButton');
     for(let i = 0; i < vowelList.length; i++){
         vowelList[i].addEventListener("click", function(e){ //vowell buttons
-            let vowelClicked = e.target.innerHTML;
-            prize = 300;
-            checkGuess(vowelClicked);
+            if(playerScore >= 100){
+                let vowelClicked = e.target.innerHTML;
+                prize = 0;
+                playerScore -= 100
+                checkGuess(vowelClicked);
+            } else {
+                document.getElementById("messageArea").innerHTML = "<p>Sorry, you're broke</p>"
+            }
         });
     }
 
@@ -221,7 +233,7 @@
                 buzzerSound.play();
                 document.getElementById("messageArea").innerHTML = "<p style='color: yellow'>Vowels must be purchased</p>";
                 setTimeout(function(){
-                     document.getElementById("messageArea").innerHTML = "<p>$" + prize + ", choose a consonant";
+                     document.getElementById("messageArea").innerHTML = "<p>$" + prize + ", choose a consonant</p>";
                 },1500);
 
             }else{

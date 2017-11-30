@@ -30,8 +30,7 @@
             // updateScore(prize);
         }
         else if (prizeCheck >= 163 && prizeCheck <= 198) {
-            prize = 0;
-            bankruptSound.play();
+            prize = 0;            
         }
         else if (prizeCheck >= 199 && prizeCheck <= 233) {
             prize = 400;
@@ -56,12 +55,13 @@
         }
 
         wheelEnded = true;
-        if(prize){
+        
             document.getElementById("messageArea").innerHTML = "<p>$" + prize + ", choose a consonant";
             toggleVisibilityID("gameChoices");
             toggleVisibilityClass("wrapper");
             document.getElementById("gameChoices").className += " disabled";
-        } else {
+        if(!prize){
+            bankruptSound.play();
             wheelEnded = false;
             transitionEnded = false;
             playerScore = 0;
