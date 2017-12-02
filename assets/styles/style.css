@@ -19,6 +19,7 @@ html {
     background-repeat: no-repeat;
     background-position: center top;
     background-size: cover;
+    overflow-x: hidden;
 }
 
 @font-face {
@@ -150,7 +151,24 @@ html {
     width: 80%;
     text-transform: uppercase;
     min-width: 900px;
+    animation: .75s ease-out 0s 1 slideInFromRight;
 }
+
+@keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    70%{
+        transform: translateX(-2%);
+        opacity: .6;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+}
+  
 
 
 /* Score Area */
@@ -274,7 +292,6 @@ html {
     height: 60px;
     width: 100px;
     display: block;
-    margin: 0 20px 0 20px;
     font-size: 18px;
     font-family: tahoma;
     color: white;

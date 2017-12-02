@@ -16,7 +16,6 @@
     let buzzerSound = new Audio("assets/sounds/buzzer.mp3");
     let playerScore = 0;
     let wheelEnded;
-    let transitionEnded;
     let currentPuzzle;
     let lettersGuessed;
     let stringSolution;
@@ -25,7 +24,6 @@
         puzzleRevealSound.play();
         lettersGuessed = [];
         currentPuzzle = pickPuzzle();
-        transitionEnded = true;
         stringSolution = puzzleToString(currentPuzzle);
         console.log(stringSolution);
 
@@ -138,13 +136,13 @@
     }
 
     function guessEnded(){
+        document.getElementById("vowels").classList.remove("disabled");
         document.getElementById("gameChoices").classList.remove("disabled");
         document.getElementById("messageArea").innerHTML = "<p>Select your choice below</p>";
     }
 
     function checkGuess(userGuess){
         wheelEnded = false;
-        transitionEnded = false;
         
         let nodeList = document.querySelectorAll(".blank");
         let delayMulti = 0;
@@ -181,10 +179,7 @@
         }, 1200 * delayMulti);
     }
 
-    // document.addEventListener("animationend", function(e) { //unreliable for me
-    //     transitionEnded = true;
-    //     console.log('ended');
-    // });
+
     document.getElementById("spinButton").addEventListener('click', function(){
         wheelEnabled = true;
         document.getElementById("messageArea").innerHTML = "<p>Spin the wheel</p>";
@@ -215,15 +210,16 @@
     var vowelList = document.getElementsByClassName('vowelButton');
     for(let i = 0; i < vowelList.length; i++){
         vowelList[i].addEventListener("click", function(e){ //vowell buttons
-            if(playerScore >= 100){
-                let vowelClicked = e.target.innerHTML;
-                prize = 0;
-                playerScore -= 100
-                checkGuess(vowelClicked);
-            } else {
-                document.getElementById("messageArea").innerHTML = "<p>Sorry, you're broke</p>"
-            }
-        });
+                if(playerScore >= 100){
+                    let vowelClicked = e.target.innerHTML;
+                    prize = 0;
+                    playerScore -= 100
+                    document.getElementById("vowels").className += " disabled";
+                    checkGuess(vowelClicked);
+                } else {
+                    document.getElementById("messageArea").innerHTML = "<p>Sorry, you're broke</p>"
+                }
+        });    
     }
 
     document.addEventListener("keyup", function(e) {

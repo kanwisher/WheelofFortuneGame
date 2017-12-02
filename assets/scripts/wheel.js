@@ -54,16 +54,14 @@
             // updateScore(prize);
         }
 
-        wheelEnded = true;
-        
-            document.getElementById("messageArea").innerHTML = "<p>$" + prize + ", choose a consonant";
-            toggleVisibilityID("gameChoices");
-            toggleVisibilityClass("wrapper");
-            document.getElementById("gameChoices").className += " disabled";
+        wheelEnded = true;        
+        document.getElementById("messageArea").innerHTML = "<p>$" + prize + ", choose a consonant";
+        toggleVisibilityID("gameChoices");
+        toggleVisibilityClass("wrapper");
+        document.getElementById("gameChoices").className += " disabled";
         if(!prize){
             bankruptSound.play();
             wheelEnded = false;
-            transitionEnded = false;
             playerScore = 0;
             guessEnded();
         }
