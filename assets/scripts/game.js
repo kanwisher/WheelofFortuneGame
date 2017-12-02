@@ -194,11 +194,14 @@
 
     document.getElementById("solveButton").addEventListener('click', function(){
         const solution = prompt("For the solve...");
-        if (solution.trim().toUpperCase() === stringSolution.trim().toUpperCase()){
-            alert("You win!");
-        } else {
-            alert("You lose!");
+        if(solution){
+            if (solution.trim().toUpperCase() === stringSolution.trim().toUpperCase()){
+                alert("You win!");
+            } else {
+                alert("You lose!");
+            }
         }
+    
     });
 
     document.getElementById("goBackButton").addEventListener('click', function(){
