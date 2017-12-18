@@ -308,7 +308,7 @@ html {
     cursor: pointer;
 }
 
-.disabled {
+.disabled, .vowelPurchased {
     pointer-events: none;
     opacity: 0.4;
 }

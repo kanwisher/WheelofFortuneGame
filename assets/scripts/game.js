@@ -195,6 +195,7 @@
         if(solution){
             if (solution.trim().toUpperCase() === stringSolution.trim().toUpperCase()){
                 alert("You win!");
+                newRound();
             } else {
                 alert("You lose!");
             }
@@ -210,13 +211,15 @@
 
     var vowelList = document.getElementsByClassName('vowelButton');
     for(let i = 0; i < vowelList.length; i++){
-        vowelList[i].addEventListener("click", function(e){ //vowell buttons
+        vowelList[i].addEventListener("click", function(e){ //vowel buttons
+            console.log(vowelList.length);
                 if(playerScore >= 100){
-                    e.currentTarget.style.visibility = "hidden";
+                    e.currentTarget.className += " vowelPurchased";
                     let vowelClicked = e.target.innerHTML;
                     prize = 0;
                     playerScore -= 100
                     document.getElementById("vowels").className += " disabled";
+                    
                     checkGuess(vowelClicked);
                 } else {
                     document.getElementById("messageArea").innerHTML = "<p>Sorry, you're broke</p>"
