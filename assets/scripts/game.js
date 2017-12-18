@@ -84,9 +84,7 @@
             stringArray.push(puzzleObject.rowD);
         }
         return stringArray.join(" ");
-    }
-
-                            
+    }                            
 
     function winCheck(array) { //this works
         if (array.length <= 1) { //if last item was just changed to revealed 
@@ -214,6 +212,7 @@
     for(let i = 0; i < vowelList.length; i++){
         vowelList[i].addEventListener("click", function(e){ //vowell buttons
                 if(playerScore >= 100){
+                    e.currentTarget.style.visibility = "hidden";
                     let vowelClicked = e.target.innerHTML;
                     prize = 0;
                     playerScore -= 100
